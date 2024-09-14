@@ -4,7 +4,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../components/ui/tabs";
+} from "./ui/tabs";
 
 const RecentTransaction = ({
   accounts,
