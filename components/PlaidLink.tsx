@@ -7,7 +7,10 @@ import {
   usePlaidLink,
 } from "react-plaid-link";
 import { useRouter } from "next/navigation";
-import { createLinkToken, exchangePublicToken } from "../lib/actions/user.action";
+import {
+  createLinkToken,
+  exchangePublicToken,
+} from "../lib/actions/user.action";
 
 const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
   const router = useRouter();
@@ -15,7 +18,7 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
   useEffect(() => {
     const getLinkToken = async () => {
       const data = await createLinkToken(user);
-      setToken(data?.linkToken)
+      setToken(data?.linkToken);
     };
     getLinkToken();
   }, [user]);
@@ -23,20 +26,19 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
   const onSuccess = useCallback<PlaidLinkOnSuccess>(
     async (public_token: string) => {
       await exchangePublicToken({
-          publicToken:public_token,
-          user,
-      })
+        publicToken: public_token,
+        user,
+      });
       router.push("/");
-    },
-    [user]
+    },[user]
   );
   const config: PlaidLinkOptions = {
     token,
     onSuccess,
   };
 
-  const { open, ready,error } = usePlaidLink(config);
-  console.error("Plaid Link ",error)
+  const { open, ready, error } = usePlaidLink(config);
+  console.error("Plaid Link ", error);
   return (
     <>
       {variant === "primary" ? (
