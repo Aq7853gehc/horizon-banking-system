@@ -182,6 +182,11 @@ const AuthForm = ({ type }: AuthFormProps) => {
                 label="Password"
                 placeholder="Enter your password"
               />
+              {/* <label className="text-gray-400 font-medium text-sm list-none">
+                <li className="">Password must be 8 character
+                </li>
+                <li>Password must be have 1 capital letter and Spacial character "@"</li>
+              </label> */}
               <div className="flex flex-col gap-4">
                 <Button type="submit" className="form-btn" disabled={isLoading}>
                   {isLoading ? (

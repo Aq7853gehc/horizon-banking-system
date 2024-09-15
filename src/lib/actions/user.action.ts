@@ -54,6 +54,7 @@ export const signIn = async ({ email, password }: signInProps) => {
     });
 
     const user  = await getUserInfo({userId:session.userId});
+    console.log("User data",user)
     return parseStringify(user);
   } catch (error) {
     console.error(error);

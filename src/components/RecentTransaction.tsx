@@ -1,10 +1,8 @@
 import Link from "next/link";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "./ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { BankTabItem } from "./BankTabItem";
+import BankInfo from "./BankInfo";
+import TransactionTable from "./TransactionTable";
 
 const RecentTransaction = ({
   accounts,
@@ -25,12 +23,30 @@ const RecentTransaction = ({
       </header>
       <Tabs defaultValue={appwriteItemId} className="w-full">
         <TabsList className="recent-transaction-tablist">
-          {accounts.map((account:Account)=>(
+          {accounts.map((account: Account) => (
             <TabsTrigger key={account.id} value={account.appwriteItemId}>
-              {account.name}
+              <BankTabItem
+                key={account.id}
+                account={account}
+                appwriteItemId={appwriteItemId}
+              />
             </TabsTrigger>
           ))}
         </TabsList>
+        {accounts.map((account: Account) => (
+          <TabsContent
+            key={account.id}
+            value={account.appwriteItemId}
+            className="space-y-4"
+          >
+            <BankInfo
+              account={account}
+              appwriteItemId={appwriteItemId}
+              type="full"
+            />
+            <TransactionTable transactions={transactions}/>
+          </TabsContent>
+        ))}
       </Tabs>
     </section>
   );
