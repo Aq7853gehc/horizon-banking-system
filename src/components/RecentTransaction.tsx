@@ -6,7 +6,7 @@ import TransactionTable from "./TransactionTable";
 
 const RecentTransaction = ({
   accounts,
-  transactions = [],
+  transactions,
   page = 1,
   appwriteItemId,
 }: RecentTransactionsProps) => {

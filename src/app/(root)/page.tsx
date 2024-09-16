@@ -8,18 +8,22 @@ import { getLoggedInUser } from '@/lib/actions/user.action';
 const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
   const loggedIn = await getLoggedInUser();
+  if(!loggedIn) {
+    console.error("Logged in iS NUll not Check it Again the backend")
+    return 
+  }
   const accounts = await getAccounts({ 
     userId: loggedIn.$id 
   })
-
+  // console.log("Logged In",loggedIn)
   if(!accounts) return;
   
   const accountsData = accounts?.data;
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
 
   const account = await getAccount({ appwriteItemId })
-console.log("Account Details",accountsData)
-console.log("Accounts",account)
+// console.log("Account Details",accountsData)
+// console.log("Accounts",account)
   return (
     <section className="home">
       <div className="home-content">
