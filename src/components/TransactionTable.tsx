@@ -17,11 +17,14 @@ import {
 } from "@/lib/utils";
 
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
-  const {borderColor,backgroundColor,chipBackgroundColor, textColor} = transactionCategoryStyles[category as keyof typeof transactionCategoryStyles] ||transactionCategoryStyles.default
+  const { borderColor, backgroundColor, chipBackgroundColor, textColor } =
+    transactionCategoryStyles[
+      category as keyof typeof transactionCategoryStyles
+    ] || transactionCategoryStyles.default;
   return (
-    <div className={cn("category-badge",borderColor, chipBackgroundColor)}>
-      <div className={cn("size-2 rounded-full",backgroundColor)} />
-      <p className={cn("text-[12px] font-medium",textColor)}>{category}</p>
+    <div className={cn("category-badge", borderColor, chipBackgroundColor)}>
+      <div className={cn("size-2 rounded-full", backgroundColor)} />
+      <p className={cn("text-[12px] font-medium", textColor)}>{category}</p>
     </div>
   );
 };
@@ -68,15 +71,17 @@ const TransactionTable = ({ transactions }: TransactionTableProps) => {
               >
                 {isDebit ? `-${amount}` : amount}
               </TableCell>
-              <TableCell className="pl-2 pr-10"><CategoryBadge category={status}/></TableCell>
+              <TableCell className="pl-2 pr-10">
+                <CategoryBadge category={status} />
+              </TableCell>
               <TableCell className="min-w-32 pl-2 pr-10">
                 {formatDateTime(new Date(t.date)).dateTime}
               </TableCell>
-              <TableCell className="pl-2 pr-10 capitalize min-w-24 ">
+              <TableCell className="pl-2 pr-10 capitalize min-w-24 max-md:hidden">
                 {t.paymentChannel}
               </TableCell>
               <TableCell className="pl-2 pr-10 max-md:hidden">
-              <CategoryBadge category={t.category}/>
+                <CategoryBadge category={t.category} />
               </TableCell>
             </TableRow>
           );
