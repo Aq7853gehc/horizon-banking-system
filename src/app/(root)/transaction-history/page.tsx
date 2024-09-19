@@ -1,4 +1,5 @@
 import HeaderBox from "@/components/HeaderBox";
+import TransactionTable from "@/components/TransactionTable";
 import { getAccount, getAccounts } from "@/lib/actions/bank.action";
 import { getLoggedInUser } from "@/lib/actions/user.action";
 import { formatAmount } from "@/lib/utils";
@@ -52,6 +53,9 @@ const TransactionHistory = async ({
             </p>
           </div>
         </div>
+        <section className={"flex w-full flex-col gap-5 "}>
+          <TransactionTable transactions={account?.transactions} />
+        </section>
       </div>
     </section>
   );

@@ -177,7 +177,9 @@ export const getTransactions = async ({
 
       hasMore = data.has_more;
     }
-    console.log("Transactions Data: ",transactions)
+    if(!transactions) {
+      console.log("Transaction Data is not here")
+    }
     return parseStringify(transactions);
   } catch (error) {
     console.error("An error occurred while getting the accounts:", error);
