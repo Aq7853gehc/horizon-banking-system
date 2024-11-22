@@ -11,7 +11,7 @@ const Loading = () => {
         className="animate-pulse"
       />
       <h1 className="text-4xl text-black-1 font-bold font-ibm-plex-serif">
-        Horizan
+        Horizon
       </h1>
     </div>
   );

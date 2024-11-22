@@ -18,10 +18,10 @@ const Sidebar = ({ user }: SiderbarProps) => {
             src={"/icons/logo.svg"}
             width={34}
             height={34}
-            alt="Horizan Logo"
+            alt="Horizon Logo"
             className="size-[24px] max-xl:size-14"
           />
-          <h1 className="sidebar-logo">Horizan</h1>
+          <h1 className="sidebar-logo">Horizon</h1>
         </Link>
         {sidebarLinks.map((item) => {
           const isActive =
@@ -46,9 +46,9 @@ const Sidebar = ({ user }: SiderbarProps) => {
             </Link>
           );
         })}
-        <PlaidLink user={user}/>
+        <PlaidLink user={user} />
       </nav>
-      <Footer user={user}/>
+      <Footer user={user} />
     </section>
   );
 };
